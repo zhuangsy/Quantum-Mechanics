@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace qmc
+{
+    public class examples
+    {
+        public static void Teleportation()
+        {
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine("Quantum Teleportation 量子隐形传态");
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine();
+            var s = mat.GetRandomUnitKet();
+            Console.WriteLine("Random generated state  随机生成的量子态:");
+            Console.WriteLine(s.Vectorprint);
+            var a = ket.ket0;
+            var b = ket.ket0;
+            Console.WriteLine(a.Vectorprint);
+            a = mat.Hadamard * a;
+            var bell = mat.CNOT * (a ^ b);
+            Console.WriteLine("bell基:");
+            Console.WriteLine(bell.Vectorprint);
+            var sta = (mat.CNOT << 1) * (s ^ bell);
+            sta = (mat.Hadamard << 2) * sta;
+            Console.WriteLine((2 * sta).Vectorprint);
+            Console.ReadKey();
+        }
+    }
+}
